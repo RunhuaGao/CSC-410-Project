@@ -4,7 +4,7 @@ class Menu extends Component {
     constructor(props){
         super(props);
         this.state = {
-            dishes:[1,2,3]
+            dishes:[1,2,3,4]
         }
     }
 
