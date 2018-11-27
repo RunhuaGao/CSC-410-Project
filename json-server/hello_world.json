@@ -1,7 +1,14 @@
 {
-    "hello":[
+    "user":[
         {
-            "message" : "xingxing"
+            "lastname":"xingxing",
+            "middlename":null,
+            "firstname":"li",
+            "email":"852316799@qq.com",
+            "address":"604 suburban ct",
+            "gender":"male",
+            "group":"a",
+            "key": 1
         }
     ]
 }
