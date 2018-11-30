@@ -167,7 +167,7 @@ class Register extends Component{
                                     <Input type="number" innerRef={this.age} placeholder="18" size="2" onChange={this.handleChange.bind(this,3)}/>   
                                 </Col>
                             </Row>
-                            <FormGroup style={{marginTop:"15px",marginLeft:"auto"}}>
+                            <FormGroup style={{marginTop:"15px",marginLeft:'45%'}}>
                                 <button type="button" className="btn btn-info" onClick={this.submit}>Submit</button>
                             </FormGroup>
                             {/* {console.log(this.innerRefs.firstname)} */}

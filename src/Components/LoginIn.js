@@ -95,9 +95,11 @@ class LoginIn extends Component{
                 <Label for="examplePassword">Password</Label>
                 <Input type="password" innerRef={this.password} id="examplePassword" onChange={this.handleChange.bind(this,2)} placeholder="password" />
             </FormGroup>
-            <Button onClick={this.submit}>
-                Submit
-            </Button>
+            <FormGroup style={formstyle}>
+                <Button onClick={this.submit} style={formstyle}>
+                    <Label>Submit</Label>
+                </Button>
+            </FormGroup>
         </Form>
         );
     }
