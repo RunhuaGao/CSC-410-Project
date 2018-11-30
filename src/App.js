@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import NavBar from './components/NavBar';
+import Live from './components/Live';
+import ImgHomepage from './components/ImgHomepage';
+import Timer from './components/Timer';
 import './App.css';
-import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './Components/MyComponents';
+
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="App">
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
-        <Menu />
+        <NavBar />    
+        <ImgHomepage />
+        <Live />
+        <Timer />
       </div>
+
     );
   }
 }
+
+
+
 export default App;
