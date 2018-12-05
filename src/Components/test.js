@@ -15,18 +15,28 @@ class Test extends Component{
 
     handleChange(name){
         console.log(this.refs.names.value)
-        fetch('http://localhost:3001/hello',{method:'GET'})
+        fetch('http://localhost:3001',
+        {
+            method:'POST',
+            body : this.refs.names.value,
+            headers: 
+                {
+                    // 'Access-Control-Allow-Origin,':'*',
+                    'Content-Type':"text/plain",
+                    // 'credentials': 'include' 
+              　 },
+        })
             .then(
                 function(response){
-                    // console.log(response)
-                    return response.json()
+                    console.log(response)
+                    return response.text()
                 }
             )
             .then(
                 data => {
                     this.setState({
                         name: this.refs.names.value,
-                        servermessage:data[0].message
+                        servermessage:data
                     })
                 }
             )

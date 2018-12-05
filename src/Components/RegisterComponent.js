@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import User from './Users';
-import './RegisterStyle.css';
+import { withRouter } from 'react-router-dom';
 import fetch from'cross-fetch';
 import {Form, FormGroup, Input, Col,Label,Row} from 'reactstrap';
-
-
 class Register extends Component{
     constructor(props){
         super(props)
         this.lastname = React.createRef();
         this.firstname = React.createRef();
+        this.fpassword = React.createRef();
+        this.spassword = React.createRef();
         this.address = React.createRef();
         this.email = React.createRef();
         this.gender = React.createRef();
@@ -53,40 +53,55 @@ class Register extends Component{
             this.state.address,
             this.state.gender,
             this.state.group,
-            this.state.age
+            this.state.age,
         )
         // console.log(user);
-        fetch('http://localhost:3001/user',
-        {
-            method:'POST',
-            body : JSON.stringify(user),
-            headers: 
-                {
-                    // 'Accept': 'application/json',
-                    'Content-Type':"application/json",
-                    // 'credentials': 'include' 
-              　 },
-        })
-            .then(
-                response=>{
-                    if(response.ok){
-                        console.log(response)
-                        return response
-                    }else{
-                        var err = new Error('错误'+response.status+":"+response.statusText);
-                        err.response = response;
-                        throw err
+        // console.log(this.fpassword.current.value);
+        // console.log(this.spassword.current.value);
+        if (this.fpassword.current.value===this.spassword.current.value){
+            fetch('http://localhost:3001/user',
+            {
+                method:'POST',
+                body : JSON.stringify(user),
+                headers: 
+                    {
+                        // 'Accept': 'application/json',
+                        'Content-Type':"application/json",
+                        // 'credentials': 'include' 
+                　 },
+            })
+                .then(
+                    response=>{
+                        if(response.ok){
+                            console.log(response)
+                            return response
+                        }else{
+                            var err = new Error('错误'+response.status+":"+response.statusText);
+                            err.response = response;
+                            throw err
+                        }
+                    },
+                    err => {
+                        throw err;
                     }
-                },
-                err => {
-                    throw err;
-                }
-            )
-            .then(response=>response.json())
-            .then(data=>{console.log(data)})
-            .catch(function(err){
-                console.log("Cant post:"+err);
-        });
+                )
+                .then(response=>response.json())
+                .then(data=>{
+                    if (data.firstname === user.firstName){
+                        alert("successful");
+                        // console.log(this.props.history);
+                        this.props.history.push('/login')
+                        // <NavLink href='/login'> tiaozhuan </NavLink>
+                    } else{
+                    }
+                })
+                .catch(function(err){
+                    console.log("Cant post:"+err);
+                    alert("something wrong")
+            });
+        }else{
+            alert("password does not match!!")
+        }
         this.handleReset();
     }
 
@@ -107,6 +122,8 @@ class Register extends Component{
         this.gender.current.value = "male";
         this.group.current.value = "a";
         this.age.current.value = "";
+        this.fpassword.current.value = "";
+        this.spassword.current.value = "";
     }
 
     render(){
@@ -133,6 +150,16 @@ class Register extends Component{
                                 <Col style={{marginTop:"15px"}}>
                                     <Label for="name">FirstName</Label><br></br>
                                     <Input type="text" innerRef={this.firstname} placeholder="请输入名称"  onChange={this.handleChange.bind(this,2)}/>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup>
+                                <Col style={{marginTop:"15px"}}>
+                                    <Label for="name">Password</Label><br></br>
+                                    <Input valid type="password" innerRef={this.fpassword} placeholder="请输入名称" />
+                                </Col>
+                                <Col style={{marginTop:"15px"}}>
+                                    <Label for="name">Verify Password</Label><br></br>
+                                    <Input valid type="password" innerRef={this.spassword} placeholder="请输入名称" />
                                 </Col>
                             </FormGroup>
                             <FormGroup>
@@ -178,4 +205,4 @@ class Register extends Component{
         );
     }
 }
-export default Register; 
+export default withRouter(Register); 

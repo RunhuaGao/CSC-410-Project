@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import { withRouter } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 var formstyle = {
     width:"400px",
@@ -13,6 +14,12 @@ class LoginIn extends Component{
         this.state={
             email:null,
             password:null,
+            fullname:"xingxing",
+            lastname:"li",
+            age:"18",
+            gender:"male",
+            address:"604 Suburban Court,Rochester,NY 14620",
+            contestgroup:"A",
         }
         this.submit=this.submit.bind(this);
         this.handleChange=this.handleChange.bind(this);
@@ -29,18 +36,8 @@ class LoginIn extends Component{
     }
 
     submit(){
-        // var user = new User(
-        //     this.state.firstName,
-        //     this.state.lastName,
-        //     this.state.email,
-        //     this.state.address,
-        //     this.state.gender,
-        //     this.state.group,
-        //     this.state.age
-        // )
-        // console.log(user);
         var user = this.state;
-        console.log(this.state.email)
+        console.log(user)
         fetch('http://localhost:3001/user',
         {
             method:'POST',
@@ -68,7 +65,10 @@ class LoginIn extends Component{
                 }
             )
             .then(response=>response.json())
-            .then(data=>{console.log(data)})
+            .then(data=>{
+                console.log(data)
+                this.props.history.push('/userinfo',data)
+            })
             .catch(function(err){
                 console.log("Cant post:"+err);
         });
@@ -104,4 +104,4 @@ class LoginIn extends Component{
         );
     }
 }
-export default LoginIn;
+export default withRouter(LoginIn);
