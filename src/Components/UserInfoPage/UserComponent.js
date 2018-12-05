@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import { func } from "prop-types";
-import User from "./User"
+import User from "../Users"
+import fetch from 'cross-fetch';
 const fontcolor = "White";
 
 
@@ -21,7 +22,6 @@ function ShowInfo(props){
     );
 }
 function ShowUser(props){
-
     return (
         <div className = "User info" style = {{marginTop:"5px",marginLeft:"440px",marginRight:"440px",backgroundColor:"Blue",width:"500"}} align="center">
         <ShowInfo infoname = "User Name" value={props.user.fullname}/>
