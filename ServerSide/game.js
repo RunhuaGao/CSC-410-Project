@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
-    player_1:{
+    player1:{
         type:String,
         required:true
     },
-    player_2:{
+    player2:{
         type:String,
         required:true
     },
