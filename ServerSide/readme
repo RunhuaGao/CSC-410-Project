@@ -1,1 +1,4 @@
-111
+ServerSide code</br>
+Use Node.express as server router & controller</br>
+Use Mongoose as Node JavaScript Driver to Connect</br>
+server to mongoDB
