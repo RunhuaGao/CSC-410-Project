@@ -15,4 +15,4 @@ The front end is designed based on <b>react</b> and <b>reactstrap & bootstrap</b
   
   After registering, as we get user's address, we use the <b>Google Map</b> API and react mark component to show the <b>rountine</b> from user's home to game station, which help user to find right place. 
 
-Team Members: Xingxing Li, Runhua Gao, Jixun Xu
+Team Members: Xingxing Li, Runhua Gao, Jiyun Xu
