@@ -6,7 +6,7 @@ The front end is designed based on <b>react</b> and <b>reactstrap & bootstrap</b
   
   Server side controller is established based on <b>Express</b>, a JavaScript server library, to construct multiple router to get requeset and send data with client.</br>
 
-  Also manipulate data via <b>MongoDB</b>, connect it to server controller with usage of <b><mongoose</b>, a mongoDB  JavaScript driver.
+  Also manipulate data via <b>MongoDB</b>, connect it to server controller with usage of <b>mongoose</b>, a mongoDB  JavaScript driver.
 
 
   The website we build is a badminton game registration webpage, use could register here and use their email&password to log in to see their game history</br>
