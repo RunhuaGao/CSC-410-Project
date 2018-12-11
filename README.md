@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is the course Project for CSC 410-Web Programming of University of Rochester in Fall 2018</br>
 
-The front end is designed based on <b>react</b> and <b><reactstrap/b>,<b>bootstrap</b> and some other UI components library.</br>
+The front end is designed based on <b>react</b> and <b>reactstrap & bootstrap</b> and some other UI components libraries.</br>
   
   Server side controller is established based on <b>Express</b>, a JavaScript server library, to construct multiple router to get requeset and send data with client.</br>
 
