@@ -28,22 +28,17 @@ gameRouter.route('/')
 })
 .post((req,res,next)=>{
     var tempgame = req.body;
-    if(game.validate(req.body)===false){
-        res.send("False data received..");
-    } else{
-        res.send("Correct data");
-    }
-    // game.create(tempgame)
-    // .then((document)=>{
-    //     console.log("Data stores successfully:"+document);
-    //     res.setHeader("Access-Control-Allow-Origin","*");
-    //     res.send("Data Stores successfully!");
-    // })
-    // .catch(Error=>{
-    //     console.log(Error);
-    //     res.setHeader("Access-Control-Allow-Origin","*");
-    //     res,send("Data store error, some key value pairs are missed.");
-    // })
+    game.create(tempgame)
+    .then((document)=>{
+        console.log("Data stores successfully:"+document);
+        res.setHeader("Access-Control-Allow-Origin","*");
+        res.send("Data Stores successfully!");
+    })
+    .catch(Error=>{
+        console.log(Error);
+        res.setHeader("Access-Control-Allow-Origin","*");
+        res,send("Data store error, some key value pairs are missed.");
+    })
 });
 
 
