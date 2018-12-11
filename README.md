@@ -14,3 +14,5 @@ The front end is designed based on <b>react</b> and <b><reactstrap/b>,<b>bootstr
   There are three <b>live boards</b> on our page, from which all users could see the score of games that are playing.</br>
   
   After registering, as we get user's address, we use the <b>Google Map</b> API and react mark component to show the <b>rountine</b> from user's home to game station, which help user to find right place. 
+
+Team Members: Xingxing Li, Runhua Gao, Jixun Xu
