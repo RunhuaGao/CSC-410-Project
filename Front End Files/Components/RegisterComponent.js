@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import User from './Users';
 import { withRouter } from 'react-router-dom';
 import fetch from'cross-fetch';
+import {AvForm,AvField} from 'availity-reactstrap-validation';
 import {Form, FormGroup, Input, Col,Label,Row} from 'reactstrap';
 class Register extends Component{
     constructor(props){
@@ -68,6 +69,7 @@ class Register extends Component{
             this.state.address != null &&
             this.state.gender != null &&
             this.state.password !=null){
+            if (this.this.fpassword.current.value)
             if (this.fpassword.current.value===this.spassword.current.value){
                 fetch('http://localhost:3001/player',
                 {
@@ -98,7 +100,7 @@ class Register extends Component{
                     .then(response=>response.text())
                     .then(data=>{
                         console.log(data);
-                        if (data == '1'){
+                        if (data === '1'){
                             alert("successful");
                             // console.log(this.props.history);
                             this.props.history.push('/login')
@@ -159,60 +161,60 @@ class Register extends Component{
                         </Col>
                         <Col style={{backgroundColor: "#43b3b3",width:"100%"}}>
                         <FormGroup>
-                                <Col style={{marginTop:"15px"}}>
-                                    <Label for="name" >LastName</Label><br></br>
-                                    <Input type="text" innerRef={this.lastname} placeholder="请输入名称"  onChange={this.handleChange.bind(this,1)}/>
-                                </Col>
-                                <Col style={{marginTop:"15px"}}>
-                                    <Label for="name">FirstName</Label><br></br>
-                                    <Input type="text" innerRef={this.firstname} placeholder="请输入名称"  onChange={this.handleChange.bind(this,2)}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup>
-                                <Col style={{marginTop:"15px"}}>
-                                    <Label for="name">Password</Label><br></br>
-                                    <Input valid type="password" innerRef={this.fpassword} placeholder="请输入名称" onChange={this.handleChange.bind(this,8)}/>
-                                </Col>
-                                <Col style={{marginTop:"15px"}}>
-                                    <Label for="name">Verify Password</Label><br></br>
-                                    <Input valid type="password" innerRef={this.spassword} placeholder="请输入名称" />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup>
-                                <Col style={{marginTop:"15px"}}>
-                                    <Label for="name">Address</Label><br></br>
-                                    <Input valid type="text" innerRef={this.address} placeholder="请输入名称" onChange={this.handleChange.bind(this,5)}/>
-                                </Col>
-                                <Col style={{marginTop:"15px"}}>
-                                    <Label for="name">Email</Label><br></br>
-                                    <Input valid type="text" innerRef={this.email} placeholder="请输入名称" onChange={this.handleChange.bind(this,6)}/>
-                                </Col>
-                            </FormGroup>
-                            <Row style={{marginTop:"15px"}}>
-                                <Col >
-                                    <Label for="name">Gender</Label><br></br>
-                                    <Input type='select' innerRef={this.gender} defaultValue="male" onChange={this.handleChange.bind(this,4)}>
-                                        <option value="male">male</option>
-                                        <option value="female">female</option>
-                                    </Input>
-                                </Col>
-                                <Col>
-                                    <Label for="name">Group</Label><br></br> 
-                                    <Input type='select' innerRef={this.group} defaultValue="a" onChange={this.handleChange.bind(this,7)}>
-                                        <option value="a">A</option>
-                                        <option value="b">B</option>
-                                        <option value="c">C</option>
-                                        <option value="d">D</option>
-                                    </Input>
-                                </Col>
-                                <Col>
-                                    <Label for="name">Age</Label><br></br>
-                                    <Input type="number" innerRef={this.age} placeholder="18" size="2" onChange={this.handleChange.bind(this,3)}/>   
-                                </Col>
-                            </Row>
-                            <FormGroup style={{marginTop:"15px",marginLeft:'45%'}}>
-                                <button type="button" className="btn btn-info" onClick={this.submit}>Submit</button>
-                            </FormGroup>
+                            <Col style={{marginTop:"15px"}} sm={10}>
+                                <Label for="name" >LastName</Label><br></br>
+                                <Input type="text" innerRef={this.lastname} placeholder="请输入名称"  onChange={this.handleChange.bind(this,1)}/>
+                            </Col>
+                            <Col style={{marginTop:"15px"}}>
+                                <Label for="name">FirstName</Label><br></br>
+                                <Input type="text" innerRef={this.firstname} placeholder="请输入名称"  onChange={this.handleChange.bind(this,2)}/>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup>
+                            <Col style={{marginTop:"15px"}}>
+                                <Label for="name">Password</Label><br></br>
+                                <Input valid type="password" innerRef={this.fpassword} placeholder="请输入名称" onChange={this.handleChange.bind(this,8)}/>
+                            </Col>
+                            <Col style={{marginTop:"15px"}}>
+                                <Label for="name">Verify Password</Label><br></br>
+                                <Input valid type="password" innerRef={this.spassword} placeholder="请输入名称" />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup>
+                            <Col style={{marginTop:"15px"}}>
+                                <Label for="name">Address</Label><br></br>
+                                <Input valid type="text" innerRef={this.address} placeholder="请输入名称" onChange={this.handleChange.bind(this,5)}/>
+                            </Col>
+                            <Col style={{marginTop:"15px"}}>
+                                <Label for="name">Email</Label><br></br>
+                                <Input valid type="email" innerRef={this.email} placeholder="请输入名称" onChange={this.handleChange.bind(this,6)}/>
+                            </Col>
+                        </FormGroup>
+                        <Row style={{marginTop:"15px"}}>
+                            <Col >
+                                <Label for="name">Gender</Label><br></br>
+                                <Input type='select' innerRef={this.gender} defaultValue="male" onChange={this.handleChange.bind(this,4)}>
+                                    <option value="male">male</option>
+                                    <option value="female">female</option>
+                                </Input>
+                            </Col>
+                            <Col>
+                                <Label for="name">Group</Label><br></br> 
+                                <Input type='select' innerRef={this.group} defaultValue="a" onChange={this.handleChange.bind(this,7)}>
+                                    <option value="a">A</option>
+                                    <option value="b">B</option>
+                                    <option value="c">C</option>
+                                    <option value="d">D</option>
+                                </Input>
+                            </Col>
+                            <Col>
+                                <Label for="name">Age</Label><br></br>
+                                <Input type="number" innerRef={this.age} placeholder="18" size="2" onChange={this.handleChange.bind(this,3)}/>   
+                            </Col>
+                        </Row>
+                        <FormGroup style={{marginTop:"15px",marginLeft:'45%'}}>
+                            <button type="button" className="btn btn-info" onClick={this.submit}>Submit</button>
+                        </FormGroup>
                             {/* {console.log(this.innerRefs.firstname)} */}
                         </Col>
                     </Row>
