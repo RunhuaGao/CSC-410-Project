@@ -3,7 +3,6 @@ import {
     Navbar,
     NavbarBrand,
     Card, 
-    Button, 
     CardTitle, 
     CardText, 
     Row, 
@@ -83,20 +82,20 @@ class Live extends Component {
     var occupied3 = this.state.court3occupied
 
     function Availability1() {
-        if (occupied1 == true)
+        if (occupied1 === true)
             {return 'Occupied'}
         else
             {return 'Availble'}
     }
 
     function Availability2() {
-      if (occupied2 == true)
+      if (occupied2 === true)
           {return 'Occupied'}
       else
           {return 'Availble'}
   }
     function Availability3() {
-      if (occupied3 == true)
+      if (occupied3 === true)
           {return 'Occupied'}
       else
           {return 'Availble'}

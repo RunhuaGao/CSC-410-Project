@@ -13,8 +13,6 @@ import {
     DropdownItem } from 'reactstrap';
 
 
-
-
 class NavBar extends Component {
 
   constructor(props) {
@@ -53,15 +51,15 @@ class NavBar extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Rules
+                    <NavLink href="/rule">Rule</NavLink>
                   </DropdownItem>
                   <DropdownItem>
                     Awards
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
+                  {/* <DropdownItem>
                     Reset
-                  </DropdownItem>
+                  </DropdownItem> */}
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>

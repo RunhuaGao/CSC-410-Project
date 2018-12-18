@@ -6,6 +6,8 @@ import Register from './RegisterComponent';
 import Userinterface from './UserInfoPage/UserInterface';
 import SimpleMap from './UserInfoPage/SimpleMap';
 import Live from "./Live";
+import Lives from './showlive';
+import RuleComponent from './rule';
 var footerstyle = {
     width:"500px",
     marginLeft:"auto", 
@@ -21,7 +23,8 @@ class Home extends Component{
                     <Route exact path="/login" component={()=><LoginIn history='/login'/>} />
                     <Route exact path= "/register" component={()=><Register/>} />
                     <Route exact path="/userinfo" component={() =><Userinterface/>}/>
-                    <Route exact path="/live" component={() =><Live/>}/>
+                    <Route exact path="/live" component={() =><Lives/>}/>
+                    <Route exact path="/rule" component={() =><RuleComponent/>}/>
                     <Route path="/map/:address" component={() =><SimpleMap/>}/>
                     <Redirect to="/login" />
                 </Switch>

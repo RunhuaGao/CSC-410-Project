@@ -1,11 +1,16 @@
 import React,{Component} from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, FormGroup, Label } from 'reactstrap';
+import {AvForm,AvField} from 'availity-reactstrap-validation';
+
+// define the style of form 
 var formstyle = {
     width:"400px",
     marginLeft:"auto",
     marginRight:"auto",
 };
+
+// define loginin component
 class LoginIn extends Component{
     constructor(props){
         super(props);
@@ -19,6 +24,7 @@ class LoginIn extends Component{
         this.handleChange=this.handleChange.bind(this);
     }
 
+    // similar with part in register
     handleChange(id,event){
         event.preventDefault();
         var value = event.target.value;
@@ -29,76 +35,84 @@ class LoginIn extends Component{
        }
     }
 
+    // how to handle sumit and send request
     submit(){
-        var user = this.state;
-        // console.log(user)
-        fetch('http://localhost:3001/login',
-        {
-            method:'POST',
-            body : JSON.stringify(user),
-            headers: 
-                {
-                    // 'Accept': 'application/json',
-                    'Content-Type':"application/json",
-                    // 'credentials': 'include' 
-              　 },
-        })
-            .then(
-                response=>{
-                    if(response.ok){
-                        // console.log(response)
-                        return response
-                    }else{
-                        var err = new Error('错误'+response.status+":"+response.statusText);
-                        err.response = response;
-                        throw err
-                    }
-                },
-                err => {
-                    throw err;
-                }
-            )
-            .then(response=>response.json())
-            .then(data=>{
-                // console.log(data)
-                if(data.validation === 1){
-                    this.props.history.push('/userinfo',data.info)
-                }else{
-                    alert('Password wrong or email do not exist')
-                }
+        // console.log(JSON.stringify(this.refs.loginform.state.invalidInputs))
+        if(JSON.stringify(this.refs.loginform.state.invalidInputs) === "{}"){
+            var user = this.state;
+            // console.log(user)
+            fetch('http://localhost:3001/login',
+            {
+                method:'POST',
+                body : JSON.stringify(user),
+                headers: 
+                    {
+                        // 'Accept': 'application/json',
+                        'Content-Type':"application/json",
+                        // 'credentials': 'include' 
+                　 },
             })
-            .catch(function(err){
-                console.log("Cant post:"+err);
-        });
-        // console.log(this.state)
-        this.handleReset();
+                .then(
+                    response=>{
+                        if(response.ok){
+                            // console.log(response)
+                            return response
+                        }else{
+                            var err = new Error('错误'+response.status+":"+response.statusText);
+                            err.response = response;
+                            throw err
+                        }
+                    },
+                    err => {
+                        throw err;
+                    }
+                )
+                .then(response=>response.json())
+                .then(data=>{
+                    // console.log(data)
+                    if(data.validation === 1){
+                        this.props.history.push('/userinfo',data)
+                    }else{
+                        alert('Password wrong or email do not exist')
+                    }
+                })
+                .catch(function(err){
+                    console.log("Cant post:"+err);
+            });
+            // console.log(this.state)
+            // reset the form
+            this.refs.loginform.reset();
+        }else{
+            alert('some fields are invalid')
+        }
     }
 
-    handleReset(){
-        this.setState({
-            email : null,
-            password:null,
-        });
-        this.email.current.value="";
-        this.password.current.value="";
-    }
-    render() {
+    // how to display the form
+    render(){
         return (
-        <Form style={{marginTop:'200px',marginBottom:"auto"}}>
+        <AvForm style={{marginTop:'200px',marginBottom:"auto"}} ref='loginform'>
             <FormGroup style = {formstyle} >
                 <Label for="exampleEmail">Email</Label>
-                <Input type="email" innerRef={this.email} id="exampleEmail" onChange={this.handleChange.bind(this,1)} placeholder="email" />
+                <AvField type="email"  name="email" placeholder="请输入名称" onChange={this.handleChange.bind(this,1)}
+                validate={{required:{value:true,errorMessage:'you need to input email'},
+                email:{value:true,errorMessage:"please input valid email"}}}/>
             </FormGroup>
             <FormGroup style = {formstyle}>
                 <Label for="examplePassword">Password</Label>
-                <Input type="password" innerRef={this.password} id="examplePassword" onChange={this.handleChange.bind(this,2)} placeholder="password" />
+                <AvField type="password" name='fpassword' placeholder="请输入名称"  onChange={this.handleChange.bind(this,2)}
+                validate={{
+                    required:{value:true, errorMessage:'you have to input your password'},
+                    pattern:{value:'/^.*(?=.{6,20})(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).*$/',errorMessage:'password needs to contain at least one lowcase letter and one uppercase letter and one number'},
+                    minLength:{value:8,errorMessage:'at least 8 chars'},
+                    maxLength:{value:20,errorMessage:'at most 20 chars'},
+                }}/>             
             </FormGroup>
             <FormGroup style={formstyle}>
                 <Button onClick={this.submit} style={formstyle}>
                     <Label>Submit</Label>
                 </Button>
             </FormGroup>
-        </Form>
+        </AvForm>
         );
     }
 }
