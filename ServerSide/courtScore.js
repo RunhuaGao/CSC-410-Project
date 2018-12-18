@@ -10,14 +10,14 @@ class court{
     }
 
     updatestatus(){
-        if(this.turn==1){
-            this.score1+=1;
-            this.turn=2;
-        } else{
-            this.score2+=1;
-            this.turn=1;
+        var prob = Math.random();
+        if(prob < 0.5){
+            this.score1+=7;
         }
-        if(this.score1===30 | this.score2===30){
+        else{
+            this.score2+=7;
+        }
+        if(score1===21 | score2===21){
             this.occupied = false;
         }
     }

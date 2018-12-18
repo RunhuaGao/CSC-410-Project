@@ -1,6 +1,8 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'); // mongoose library, JavaScript MongoDB driver
+const Schema = mongoose.Schema; // Schema, a class that stands for a type of data
 
+
+// created game data prototype
 const gameSchema = new Schema({
     player1:{
         type:String,
@@ -23,5 +25,7 @@ const gameSchema = new Schema({
         required:true
     }
 });
+// Use mongoose to model game data type
 const game = mongoose.model('game',gameSchema);
+// export game data type
 module.exports = game;

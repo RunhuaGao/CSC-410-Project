@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var playerRouter = require('./routes/playerRouter');
 var courtRouter = require('./routes/courtRouter');
 var gameRouter = require('./routes/gameRouter');
+var loginRouter = require('./routes/loginRouter');
 var app = express();
 
 // view engine setup
@@ -21,11 +22,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// bind spcific paths to different routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/player',playerRouter);
 app.use('/court',courtRouter);
 app.use('/game',gameRouter);
+app.use('/login',loginRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -45,14 +48,13 @@ app.use(function(err, req, res, next) {
 
 // mongo db section
 const mongoose = require('mongoose');
-// const player = require('./models/player');
+// connect to mongodb, database name: player
 const playerurl = "mongodb://localhost:27017/player";
 const playercon = mongoose.connect(playerurl,{useNewUrlParser:true});
 playercon.then((db)=>{
   console.log("Connected to player database successfully!");
 }).catch(err=>{
-  console.log(err);
+  console.log(err,connect);
+  connect.close();
 });
-
-
 module.exports = app;
