@@ -3,9 +3,10 @@ import {
     Button, Form, FormGroup, Label, Input,
     FormText,
 } from "reactstrap";
-import axios from "axios";
-var apikey = "AIzaSyDRLD78FxOy42tdPVfLSbpbmBCC_bHmVg4";
-var basicurl = "https://translation.googleapis.com/language/translate/v2?";
+import axios from "axios"; // axiso library, use it to fetch data from server
+var apikey = "AIzaSyDRLD78FxOy42tdPVfLSbpbmBCC_bHmVg4"; // Google cloud translate api key
+var basicurl = "https://translation.googleapis.com/language/translate/v2?";// Google cloud translate prefix url 
+// RuleComponent class definition
 class RuleComponent extends Component {
     constructor(props) {
         super(props);
@@ -16,14 +17,15 @@ class RuleComponent extends Component {
         }
         this.search.bind(this);
     }
-
+    
+    // handle input word value change(the text to be translated)
     handleGetInputValue = (event) => {
         this.setState({
             keyword: event.target.value,
         })
     };
 
-
+    // translate button event handler
     search = (event) => {
         if (this.state.keyword != undefined) {
             axios.get(basicurl + `q=${this.state.keyword}&target=${this.state.targetlanguage}&format=text&&key=${apikey}`)
@@ -40,13 +42,15 @@ class RuleComponent extends Component {
         }
     }
 
-
+    // target language chnage handler
     changelanguage = (event) => {
         this.setState({ targetlanguage: event.target.value }, () => {
             console.log(this.state.targetlanguage);
         })
     }
-
+    
+    
+    // final return function
     render() {
         return (
             <div style={{backgroundColor:"skyblue"}}>
