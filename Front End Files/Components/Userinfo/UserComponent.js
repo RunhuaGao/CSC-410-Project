@@ -1,9 +1,9 @@
 import React from "react";
 import User from "../Users"
-const fontcolor = "White";
+
 
 function ShowInfo(props){
-    console.log(props)
+    // console.log(props)
     return (
         <div className = {props.infoname} style={{marginTop:"35"}}>
             {/* <font style = {{color:fontcolor}}> */}
@@ -13,7 +13,7 @@ function ShowInfo(props){
     );
 }
 function ShowUser(props){
-    {console.log(props.user)}
+    // {console.log(props.user)}
     return (
         <div className = "User info" style = {{marginTop:"5px",marginLeft:"440px",marginRight:"440px",backgroundColor:"Blue",width:"500"}} align="center">
         <ShowInfo infoname = "User Name" value={props.user.fullname}/>

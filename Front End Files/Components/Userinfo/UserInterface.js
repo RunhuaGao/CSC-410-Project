@@ -25,7 +25,7 @@ class UserInterface extends Component {
                         <font className="Heading text-info" style={{ color: "Blue" }} back>
                             2018    Badminton    Contest
                             User Info Page
-                    </font>
+                        </font>
 
                     </h3>
                     {/* <Navbar color="faded" style = {navstyle}>
@@ -33,12 +33,12 @@ class UserInterface extends Component {
                         <NavItem style={{marginRight:"20px"}}> User Private Info</NavItem>
                         <NavItem >Game History</NavItem>
                     </Navbar> */}
-                    {/* {console.log(this.props.location.state)} */}
-                    <ShowUser user={this.props.location.state}/>
-                    {/* <ShowGame username={this.props.location.state.fullname} games={this.props.location.state.games} /> */}   
+                    {console.log(this.props.location.state)}
+                    <ShowUser user={this.props.location.state.info}/>
+                    <ShowGame username={this.props.location.state.info.fullname} games={this.props.location.state.game} />   
                 </div>
                 <div style={buttonstyle}>
-                <Button outline color="primary" sm={10}  onClick={()=>this.props.history.push('/map/'+this.props.location.state.address)} >Find Route</Button>{ ' ' }        
+                <Button outline color="primary" sm={10}  onClick={()=>this.props.history.push('/map/'+this.props.location.state.info.address)} >Find Route</Button>{ ' ' }        
                 <Button outline color="primary" sm={10}  onClick={()=>this.props.history.push('/login')} >Log Out</Button>{ ' ' }
                 </div>
             </div >
