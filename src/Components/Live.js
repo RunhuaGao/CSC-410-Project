@@ -14,6 +14,7 @@ import fetch from 'cross-fetch';
 class Live extends Component {
   constructor(props) {
     super(props)
+    // initial state of information
     this.state = {
       court1name1:null,
       court1name2:null,
@@ -32,7 +33,7 @@ class Live extends Component {
   this.handleChange = this.handleChange.bind(this) ;
 }
   
-
+  // get data from server (fetch)
   handleChange(){
 
     fetch('http://localhost:4000/court?id=1',{method:'GET'})
@@ -65,14 +66,19 @@ class Live extends Component {
                 })
             }
         )
+      
+        // deal with error
         .catch(function(err){
             console.log("Fetch错误:"+err);
     });
   }
-
+  
+  // get data from server every 3 seconds
   componentDidMount() {
     this.interval = setInterval(() => this.handleChange(), 3000);
   }
+    
+  // clean up
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -82,6 +88,7 @@ class Live extends Component {
     var occupied2 = this.state.court2occupied
     var occupied3 = this.state.court3occupied
 
+    // turning boolean to string
     function Availability1() {
         if (occupied1 == true)
             {return 'Occupied'}
@@ -103,7 +110,7 @@ class Live extends Component {
   }
   
 
-
+    // live update match information
     return (
       <div>
         <Navbar color="light" light expand="md">
