@@ -8,7 +8,7 @@ var newplace;
 var gameplace;
 var destination = 'Robert B. Goergen Athletic Center, Rochester, NY 14611';
 const Marker = ({name}) => <div>{name}</div>; // define the component of marker
-
+var flag = 1;
 // define the simplemap component
 class SimpleMap extends Component {
     constructor(props){
@@ -29,22 +29,27 @@ class SimpleMap extends Component {
     // console.log(newplace.la.j)
     // change the default center to the address center
     Center(){
-        this.setState({
-            center:{
-                lat : newplace.la.l,
-                lng : newplace.ea.j,
-            },
-            game:{
-                lat : gameplace.la.l,
-                lng : gameplace.ea.j,
-            },
-            zoom : 14,
-        });
+        if(flag === 1){
+            this.setState({
+                center:{
+                    lat : newplace.lat(),
+                    lng : newplace.lng(),
+                },
+                game:{
+                    lat : gameplace.lat(),
+                    lng : gameplace.lng(),
+                },
+                zoom : 14,
+            });
+        }else{
+            alert('the address has problems')
+        }
     };
 
     // define the load api process
     apiIsLoaded = (map,maps) => {
         startplace = this.props.match.params.address; // get address information from URL
+        // startplace = '1600 elmwood avenue,rochester';
         const directionsService = new maps.DirectionsService(); // load service of find direction
         const directionsDisplay = new maps.DirectionsRenderer(); // load the service of display direction
 
@@ -55,6 +60,7 @@ class SimpleMap extends Component {
             travelMode: 'DRIVING' // the transportation way is driving
         }, (response, status) => {
             if (status === 'OK') {
+                flag = 1;
                 directionsDisplay.setDirections(response);
                 // console.log(response.routes[0].overview_path, 'Ruta')
 
@@ -73,8 +79,8 @@ class SimpleMap extends Component {
                     function(result,status){
                         if(status==='OK'){
                             // console.log(result[0]);
-                            newplace = result[0].geometry.viewport;
-                            // console.log(newplace)
+                            newplace = result[0].geometry.location;
+                            console.log(newplace.lat())
                             // this.props.center=result[0].geometry.location;
                         }
                     }
@@ -85,13 +91,14 @@ class SimpleMap extends Component {
                     function(result,status,){
                         if(status==='OK'){
                             // console.log(result[0]);
-                            gameplace = result[0].geometry.viewport;
+                            gameplace = result[0].geometry.location;
                             // console.log(gameplace)
                             // this.props.center=result[0].geometry.location;
                         }
                     }
                 )
             } else {
+                flag = 0;
                 window.alert('Directions request failed due to ' + status);
             }
         });

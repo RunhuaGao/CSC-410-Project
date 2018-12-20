@@ -1,4 +1,6 @@
 import React from "react";
+
+// define how to display the game history information of player
 function ShowSingleGame(props){
     return (
         <tr id = {props.game.id}> 
@@ -11,6 +13,7 @@ function ShowSingleGame(props){
     );
 }
 
+// define the format of game history
 function ShowGame(props){
     // console.log(props)
     if(props.games.length > 0){

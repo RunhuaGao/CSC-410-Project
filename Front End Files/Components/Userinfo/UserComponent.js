@@ -1,7 +1,7 @@
 import React from "react";
 import User from "../Users"
 
-
+// define the format of userinformation
 function ShowInfo(props){
     // console.log(props)
     return (
@@ -12,10 +12,13 @@ function ShowInfo(props){
         </div>
     );
 }
+
+
+// define how to display user information
 function ShowUser(props){
     // {console.log(props.user)}
     return (
-        <div className = "User info" style = {{marginTop:"5px",marginLeft:"440px",marginRight:"440px",backgroundColor:"Blue",width:"500"}} align="center">
+        <div className = "User info" style = {{marginTop:"5px",width:"100%",backgroundColor:"#43b3b3"}} align="center">
         <ShowInfo infoname = "User Name" value={props.user.fullname}/>
         <ShowInfo infoname = "Age" value={props.user.age}/>
         <ShowInfo infoname = "Gender" value={props.user.gender}/>
