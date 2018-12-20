@@ -7,7 +7,7 @@ class User {
         this.address = address;
         this.gender = gender;
         this.group = group;
-        this.fullname = this.firstName+this.lastName;
+        this.fullname = this.firstName+" "+this.lastName;
         this.password = password;
     }
 }

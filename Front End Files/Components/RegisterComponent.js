@@ -104,7 +104,7 @@ class Register extends Component{
                     this.props.history.push('/login')
                     // <NavLink href='/login'> tiaozhuan </NavLink>
                 } else{
-                    alert("register fail")
+                    alert("the email have been registered")
                 }
             })
 
@@ -124,23 +124,17 @@ class Register extends Component{
     // render is define how the page displays
     render(){
         return (
-            <div>
-            <FormGroup>
-                <img src="https://s3-eu-west-1.amazonaws.com/rb-cms/rbv5/production/uploads/cover_images/1a29e62b3931444eafd87ca02117c4594502/i1080x475.jpg" alt='world champion'
-                width="100%" height="50">
-                </img> 
-            </FormGroup>
-
+            <div height="100px">
             {/* define the form */}
-            <AvForm ref='signupform'>
+            <AvForm ref='signupform' >
                 <FormGroup>
                     <Row>
                         <Col>
-                            <img src="https://s3-eu-west-1.amazonaws.com/rb-cms/rbv5/production/uploads/cover_images/1a29e62b3931444eafd87ca02117c4594502/i1080x475.jpg" alt='world champion'
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlDJemHrlCDgPh3FInPzy2_4cKlKNCGU1nzfaYR8kmo4iNyDdgJA" alt='world champion'
                             width="100%" height="100%" >
                             </img> 
                         </Col>
-                        <Col style={{backgroundColor: "#43b3b3",width:"100%"}}>
+                        <Col style={{backgroundColor: "#43b3b3",width:"80%"}}>
                         <FormGroup>
                             <Col style={{marginTop:"15px"}} >
                                 <Label for="name" >LastName</Label><br></br>

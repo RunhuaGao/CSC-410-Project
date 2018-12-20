@@ -1,39 +1,39 @@
 import React, { Component } from 'react';
 import { 
-    Navbar,
-    NavbarBrand,
-    Card, 
-    CardTitle, 
-    CardText, 
-    Row, 
-    Col } from 'reactstrap';
+  Navbar,
+  NavbarBrand,
+  Card, 
+  CardTitle, 
+  CardText, 
+  Row, 
+  Col } from 'reactstrap';
 import fetch from 'cross-fetch';
 
 
 class Live extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      court1name1:null,
-      court1name2:null,
-      court1score1:null,
-      court1score2:null,
-      court2name1:null,
-      court2name2:null,
-      court2score1:null,
-      court2score2:null,
-      court3name1:null,
-      court3name2:null,
-      court3score1:null,
-      court3score2:null,
+    constructor(props) {
+      super(props)
+      this.state = {
+        court1name1:null,
+        court1name2:null,
+        court1score1:null,
+        court1score2:null,
+        court2name1:null,
+        court2name2:null,
+        court2score1:null,
+        court2score2:null,
+        court3name1:null,
+        court3name2:null,
+        court3score1:null,
+        court3score2:null,
+    }
+    global.name = ""
+    this.handleChange = this.handleChange.bind(this) ;
   }
-  global.name = ""
-  this.handleChange = this.handleChange.bind(this) ;
-}
   
-
+// define what to do after get response from server
   handleChange(){
-
+// send request to server
     fetch('http://localhost:3001/court?id=4',{method:'GET'})
 
         .then(
@@ -42,6 +42,7 @@ class Live extends Component {
                 return response.json()
             }
         )
+        // change the state as response
         .then(
             data => {console.log(data);
 
@@ -69,18 +70,23 @@ class Live extends Component {
     });
   }
 
+  // define every 3 second to send a request to server
   componentDidMount() {
     this.interval = setInterval(() => this.handleChange(), 3000);
   }
+
+  // after 3000s, clear the storage
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
+  // how to display the page
   render() {
     var occupied1 = this.state.court1occupied
     var occupied2 = this.state.court2occupied
     var occupied3 = this.state.court3occupied
 
+  // judge whether the court is available
     function Availability1() {
         if (occupied1 === true)
             {return 'Occupied'}
@@ -102,7 +108,7 @@ class Live extends Component {
   }
   
 
-
+  // define the display form
     return (
       <div>
         <Navbar color="light" light expand="md">
@@ -113,14 +119,14 @@ class Live extends Component {
           <Row>
               <Col sm="6">
                 <Card body>
-                  <CardTitle >{this.state.court1name1}</CardTitle>
-                  <CardText >{this.state.court1score1}</CardText> 
+                  <CardTitle >{occupied1 ? this.state.court1name1:null}</CardTitle>
+                  <CardText >{occupied1 ? this.state.court1score1:null}</CardText> 
                 </Card>
               </Col>
               <Col sm="6">
                 <Card body>
-                  <CardTitle>{this.state.court1name2}</CardTitle>
-                  <CardText>{this.state.court1score2}</CardText> 
+                  <CardTitle>{occupied1 ? this.state.court1name2:null}</CardTitle>
+                  <CardText>{occupied1 ? this.state.court1score2:null}</CardText> 
                 </Card>
               </Col>
           </Row>
@@ -132,14 +138,14 @@ class Live extends Component {
           <Row>
               <Col sm="6">
                 <Card body>
-                  <CardTitle >{this.state.court2name1}</CardTitle>
-                  <CardText>{this.state.court2score1}</CardText> 
+                  <CardTitle >{occupied2 ? this.state.court2name1:null}</CardTitle>
+                  <CardText>{occupied2 ? this.state.court2score1:null}</CardText> 
                 </Card>
               </Col>
               <Col sm="6">
                 <Card body>
-                  <CardTitle>{this.state.court2name2}</CardTitle>
-                  <CardText>{this.state.court2score2}</CardText> 
+                  <CardTitle>{occupied2 ? this.state.court2name2:null}</CardTitle>
+                  <CardText>{occupied2 ? this.state.court2score2:null}</CardText> 
                 </Card>
               </Col>
           </Row>
@@ -151,14 +157,14 @@ class Live extends Component {
           <Row>
               <Col sm="6">
                 <Card body>
-                  <CardTitle >{this.state.court3name1}</CardTitle>
-                  <CardText>{this.state.court3score1}</CardText> 
+                  <CardTitle> {occupied3 ? this.state.court3name1:null}</CardTitle>
+                  <CardText>{occupied3 ? this.state.court3score1:null}</CardText> 
                 </Card>
               </Col>
               <Col sm="6">
                 <Card body>
-                  <CardTitle>{this.state.court3name2}</CardTitle>
-                  <CardText>{this.state.court3score2}</CardText> 
+                  <CardTitle>{occupied3 ? this.state.court3name2:null}</CardTitle>
+                  <CardText>{occupied3 ? this.state.court3score2:null}</CardText> 
                 </Card>
               </Col>
           </Row>

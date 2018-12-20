@@ -28,6 +28,7 @@ class NavBar extends Component {
     });
   }
 
+  // define the header and what URL the button points to
   render() {
     return (
       <div>
@@ -53,13 +54,6 @@ class NavBar extends Component {
                   <DropdownItem>
                     <NavLink href="/rule">Rule</NavLink>
                   </DropdownItem>
-                  <DropdownItem>
-                    Awards
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  {/* <DropdownItem>
-                    Reset
-                  </DropdownItem> */}
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
@@ -69,7 +63,4 @@ class NavBar extends Component {
     );
   };
 }      
-
-
-
 export default NavBar;
