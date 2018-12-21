@@ -57,12 +57,7 @@ Userinfopage:
 	SimpleMap.js: this component load the google map api and at first it will display the default map. then after you click get route button it will firstly find the absolute geographic address of your address then find the router from your address to game gym. 
 
 
-
-
-
-
-
-server part:
+Server part:
 Backend:
   For our project, we use express(a JavaScript library) to configure the server.  This is actually how you configure the router to match different url to process different types of request. This is also our web API.
   There are total 4 routers in the server.
