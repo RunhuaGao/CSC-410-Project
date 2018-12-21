@@ -1,26 +1,33 @@
 CSC 410 Web Programming Course Project
 ======================================
 
-all the code have been posted on github and the link is https://github.com/RunhuaGao/ReactInitial.
+Team members: Xingxing Li,Runhua Gao,Jiyun Xu
+--------------
 
-This project was bootstrapped with Create React App.
+ __We build a badminton game registration web application, users could register here and use their email&password to log in to see their game history__
 
-This is the course Project for CSC 410-Web Programming of University of Rochester in Fall 2018
+### Technical Stack:
 
-The front end is designed based on react and reactstrap & bootstrap and some other UI components libraries.
+This project was bootstrapped with **Create React App**.</br>
+The front end is designed based on **React** with reactstrap, bootstrap and some other UI components libraries.</br>
+Server side controller is established based on **Express**, a JavaScript server library, to construct multiple routers to get requeset and send data with client.</br>
+Also manipulate data via **MongoDB**, connect it to server controller with usage of **mongoose**, a mongoDB JavaScript driver.
+There are three **live boards** on our page, from which all users could see the score of games that are playing.</br>
+After registering, as we get user's address, we use the **Google Map API** and react mark component to show the rountine from< user's home to game station, which help user to find right place. Also we offer user a **Google Cloud Translate** input text to translate the words into other languages at thee rule page.</br>
 
-Server side controller is established based on Express, a JavaScript server library, to construct multiple router to get requeset and send data with client.
-
-Also manipulate data via MongoDB, connect it to server controller with usage of mongoose, a mongoDB JavaScript driver.
-
-The website we build is a badminton game registration webpage, use could register here and use their email&password to log in to see their game history
-
-There are three live boards on our page, from which all users could see the score of games that are playing.
-
-After registering, as we get user's address, we use the Google Map API and react mark component to show the rountine from user's home to game station, which help user to find right place.
-
-Team Members: Xingxing Li, Runhua Gao, Jiyun Xu
-
+### Main Functions of Our Web application(Website Map)
+**Registration**: *Collect user's personal information* to register for our game(including email,password,name,group etc).</br>
+</br>
+**Login**: *User could use their email address and password* used in registration to login to our website to see their personal information and **game histroy**.
+</br>
+</br>
+**Score Board**: This is to show each court's scores lively for those users who are not present at the play station and wnat to to check the scores of other games.
+</br>
+</br>
+**Rule**: Show the rule of our game.
+</br>
+</br>
+**Third party API Usage**: **Google Cloud Map & Translate**, used to help user find a route from his/her address to our play station and translate strange words in rule page for non native speakers.
 
 Development Environment:
 Global environment: Node.js & npm.js
