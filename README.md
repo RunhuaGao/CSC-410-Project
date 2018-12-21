@@ -1,3 +1,6 @@
+CSC 410 Web Programming Course Project
+======================================
+
 all the code have been posted on github and the link is https://github.com/RunhuaGao/ReactInitial.
 
 This project was bootstrapped with Create React App.
