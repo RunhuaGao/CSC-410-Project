@@ -29,43 +29,77 @@ After registering, as we get user's address, we use the **Google Map API** and r
 </br>
 **Third party API Usage**: **Google Cloud Map & Translate**, used to help user find a route from his/her address to our play station and translate strange words in rule page for non native speakers.
 
-Development Environment:
-Global environment: Node.js & npm.js
-Front end part: React-creat-app create-react-app [projectname]
-Backend: Express-generator/install command: express [projectname]
-Database: MongoDB 
-You could see all third-party libraries we use in our project in package.json file in both 
+### Development Environment:
+**Global environment:** _Node.js & npm.js_
+</br>
+</br>
+**Client Design:** _**React** & ReactStrap&BootStrap4_
+</br>
+</br>
+**Backend&Server:** _Express-generator_
+</br>
+</br>
+**Database:** _MongoDB&Mongoose(JavaScript MongoDB driver)_ 
 
 
-front part:
-App.js:
-	this part works like the entrance to the project.
-
-Component document:
-	Home.js: create a home component and work as home page. there are a header which can redirect to other page, and a footer to define some information. Besides set the route for other component and give them a unique URL. And I design the default page is login page.
-	
-	Login.js: create a form of logining page. and when submit the information, it will send request to the server and validate whether the information is matched. Then it will direct to userinfo page.
-
-	RegisterComponent.js: create a form of register page. And when submit the information, it will at first check the information and then send request to the server. if sign uo successfully, then it will utomatically direct to home page.
-	
-	Navbar.js: create a component of header and bind all the button with unique URL.
-
-	Live.js: this component is to see the court information. And it will automatically arrange the court.The page will send requeset to server every 3 second without reload the page. We assume there is a judge and use some tool to tell server the court information. At first the court is avaiable, and when there will be a game, you can use the postman to send a request to server and tell it the game is coming. Then page get the information from server, updata the information. When the game is over(the score become 21) the court will be avaible again. 
-	
-	rule.js: it is used for help audience to know the basic rule of badminton game. Besides there is a Google Translate api
-,it can help audience to tarnslate the sentence to the language they want. There are some choices for languages.
-
-	Users.js: this page just to define the data format in register page and then return a json data.
-
-Userinfopage: 
-	UserInterface.js : this component design the userinfo page and help player to know their information and in this page they can also know their game history like the opponent name and scores. Besides when click find route button it will direct to simple map component.
-
-	Showgame.js: this component design how to display the game history.
-
-	UserComponent.js: this component design how to display the player information.
-
-	SimpleMap.js: this component load the google map api and at first it will display the default map. then after you click get route button it will firstly find the absolute geographic address of your address then find the router from your address to game gym. 
-
+### React Component Doc:
+**App.js:**
+	Entrance File, configure reactrouter between differnet components and pages
+</br>
+</br>
+>>**Home.js:**</br>
+		Create a home component and work as home page. </br>
+		There is a header which can redirect to other page</br> 
+		and a footer to define some information. Configure the route for other component and give them a unique URL. 
+		I design the default page is login page.</br>
+	</br>
+>>**Login.js:**</br> 
+	Create a form of logining page. </br>
+	When submit the information, it will send request to the server and </br>
+	validate whether the information is matched in database. </br>
+	If the email&password match, then you are directeed to right page else get a warning.</br>
+	</br>
+>>**RegisterComponent.js:** </br>
+	Create a form of register page. </br>
+	And when submit the information, it will at first check the format of information user offer</br>
+	and then send request to the server. </br>
+	If sign uo successfully, then it will utomatically direct to home page.</br>
+	</br>
+>>**Navbar.js:**</br>
+	Create a component of header and bind all the button with unique URL.</br>
+	</br>
+>>**Live.js:**</br>
+	This component is to see the court status(scores, player's name). </br>
+	It will automatically arrange the court.The page will send requeset to server every 3 second without reloading. </br>
+	We assume there is a judge and use some tool to tell server the court information. </br>
+	At first the court is avaiable, and when there will be a game, you can use the postman to send a request to server and tell it the game is coming. </br>
+	Then page get the information from server, updata the information. When the game is over(the score become 21) the court will be avaible again. </br>
+	</br>
+>>**rule.js:** </br>
+	This component is used for help audience to know the basic rule of badminton game.</br>
+	Besides there is a Google Translate api.</br>
+	helping user to translate the word into the other languages(chinese,spnish,france and latino) for non nativee speakers.</br>
+	</br>
+>>**Users.js:** </br>
+	This page just to define the data format in register page and then return a json data.</br>
+	</br>
+#### _User info page:_ </br>
+>>**UserInterface.js:** </br>
+	This component designs the userinfo page and help player to know their personal information. </br>
+	Within this page user can also review their game history like the opponent name and scores. </br>
+	Besides when user click find route button it will direct to simple map component to show a route from user's address to our playstation.</br>
+	</br>
+>>**Showgame.js:** </br>
+	The component designs how to display the game history in User info page.</br>
+	</br>
+>>**UserComponent.js:** </br>
+	The component designs how to display the player information.</br>
+	</br>
+>>**SimpleMap.js:**</br>
+	The component loading the google map api. </br>
+	Firstly it will display the default map. Then after you click get route button it should find </br>
+	the absolute geographic address of your address then find a proper routine from your address to game gym.</br> 
+	</br>
 
 Server part:
 Backend:
