@@ -6,8 +6,8 @@ Team members: Xingxing Li,Runhua Gao,Jiyun Xu
 
  __We build a badminton game registration web application, users could register here and use their email&password to log in to see their game history__
 
-### Technical Stack:
-
+Technical Stack:
+---------------
 This project was bootstrapped with **Create React App**.</br>
 The front end is designed based on **React** with reactstrap, bootstrap and some other UI components libraries.</br>
 Server side controller is established based on **Express**, a JavaScript server library, to construct multiple routers to get requeset and send data with client.</br>
