@@ -106,16 +106,20 @@ After registering, as we get user's address, we use the **Google Map API** and r
   </br>
   There are total 4 routers configured in server.___
 
-  CourtRouter: this router matches the url: localhost:3001/court
-  CourtRouter.get()
-	If the client want to get all scores, just include a query variable called id in the url. As we only have three courts, if id is in range[1,3], it will send correspond court’s info to client. If id equals 4, it will send all courts’ info to client.
-  Courtrouter.post()
-	This post method is to update each court’s score manually by sending the data to server via postman. Then the server will update database locally and then send updated data to client server to show the newest score of each court.
-
-  playerRouter: url: localhost:3001/player?fullname=[name]
-  playerRouter.get(): 
-	fetch a user’s personal information from server by including a query variable called full name, then the server will use it as a key to search in database and then send the search result to client.
-  playerRouter.post():
+>>**CourtRouter:** localhost:3001/court </br>
+>>>CourtRouter.get()</br>
+		If the client want to get all scores, just include a query variable called id in the url.</br>
+		As we only have three courts, if id is in range[1,3], it will send correspond court’s info to client. If id equals 4, it will send all courts’ info to client.</br>
+>>>Courtrouter.post()</br>
+	This post method is to update each court’s score manually by sending the data to server via postman.</br> 
+	Then the server will update database locally and then send updated data to client server to show the newest score of each court.
+</br>
+</br>
+>>**playerRouter:** localhost:3001/player?fullname=[name] </br>
+>>>playerRouter.get(): </br>
+	fetch a user’s personal information from server by including a query variable called full name,</br>
+	then the server will use it as a key to search in database and then send the search result to client.</br>
+>>>playerRouter.post():</br>
 	This method is used to get a user’s information when registering and then store it to database.
   
   loginRouter: localhost:3001/login
