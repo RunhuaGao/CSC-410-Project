@@ -101,10 +101,10 @@ After registering, as we get user's address, we use the **Google Map API** and r
 	the absolute geographic address of your address then find a proper routine from your address to game gym.</br> 
 	</br>
 
-Server part:
-Backend:
-  For our project, we use express(a JavaScript library) to configure the server.  This is actually how you configure the router to match different url to process different types of request. This is also our web API.
-  There are total 4 routers in the server.
+### Backend:</br>
+  ___For this project, we use express(a JavaScript library) to configure the server.  This is actually how you configure the router to match different url to process different types of request. This is also our web API.</br>
+  </br>
+  There are total 4 routers configured in server.___
 
   CourtRouter: this router matches the url: localhost:3001/court
   CourtRouter.get()
