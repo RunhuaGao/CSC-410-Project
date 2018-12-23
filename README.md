@@ -112,28 +112,33 @@ After registering, as we get user's address, we use the **Google Map API** and r
 		As we only have three courts, if id is in range[1,3], it will send correspond court’s info to client. If id equals 4, it will send all courts’ info to client.</br>
 >>>Courtrouter.post()</br>
 	This post method is to update each court’s score manually by sending the data to server via postman.</br> 
-	Then the server will update database locally and then send updated data to client server to show the newest score of each court.
-</br>
-</br>
+	Then the server will update database locally and then send updated data to client server to show the newest score of each court.</br></br>
+	
 >>**playerRouter:** localhost:3001/player?fullname=[name] </br>
 >>>playerRouter.get(): </br>
 	fetch a user’s personal information from server by including a query variable called full name,</br>
-	then the server will use it as a key to search in database and then send the search result to client.</br>
+	then the server will use it as a key to search in database and then send the search result to client.</br></br>
 >>>playerRouter.post():</br>
-	This method is used to get a user’s information when registering and then store it to database.
+	This method is used to get a user’s information when registering and then store it to database.</br></br>
+ 
+>>**loginRouter:** localhost:3001/login</br>
+>>>loginRouter.post(): 
+	get a email and a password from client then search it in database to clarify</br>
+	if the user has already registered and the email address&password match well. Send the confirmation result to client.
   
-  loginRouter: localhost:3001/login
-  loginRouter.post(): 
-	get a email and a password from client then search it in database to clarify if the user has already registered and the email address&password match well. Send the confirmation result to client.
-  
-  gameRouter():localhost:3001/game
-  gameRouter.get():
-	search the game history of a user(there must be query variable name in the url of request) then send the search result to client.
-  gameRouter.post():
+>>**gameRouter():** localhost:3001/game</br>
+>>>gameRouter.get():
+	search the game history of a user(there must be query variable name in the url of request) then send the search result to client.</br></br>
+>>>gameRouter.post():
 	send data to server and then server will store this data into database automatically
 
-
-  For database part, we use mongoDB as our database and use mongoose(a JavaScript mongoDB driver to connect server to database) to manipulate data in JavaScript.
-  Another key point of mongoose is to establish a prototype data. There are two models(you could also call it as data type). Each model of mongoose is actually a class the specifies that the data should be. What is also convenient is that each data prototype corresponds to a collection in database as whenever you want to insert, update or do some other actions about data it will check the data to be done automatically.
-
-	
+### DataBase System: __MongoDB + Mongoose(JavaScript MongoDB Driver)__</br>
+  __The key point of mongoose is to establish a <i>prototype</i>. data. There are two models(you could also call it as data type). Each model of mongoose is actually a class the specifies that the data should be. What is also convenient is that each data prototype corresponds to a collection in database as whenever you want to insert, update or do some other actions about data it will check the data to be done automatically.__</br>
+>>**Player prototype:**</br>
+Make it clear that what info of a user should be stored into database.</br>
+Including name,email,group and some other required info</br>
+(When some info is not in the json, the data can not be stored into database).</br></br>
+>>**Game prototype:**</br>
+The game history of our badminton competition.</br>
+Will search this table when user log into wenbsite to review their game history.</br>
+Also have some required info(player's name, and game result, final scores)</br>
